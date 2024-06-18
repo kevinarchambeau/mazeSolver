@@ -63,11 +63,11 @@ class Cell:
         if self.left_wall:
             # from upper left to lower left
             left_line = Line(Point(tl_x, tl_y), Point(tl_x, br_y))
-            self.win.draw_line(left_line, "black")
+            self.win.draw_line(left_line, "purple")
         if self.top_wall:
             # upper left to upper right
             top_line = Line(Point(tl_x, tl_y), Point(br_x, tl_y))
-            self.win.draw_line(top_line, "red")
+            self.win.draw_line(top_line, "purple")
         if self.right_wall:
             # upper right to lower right
             right_line = Line(Point(br_x, tl_y), Point(br_x, br_y))
@@ -75,4 +75,17 @@ class Cell:
         if self.bottom_wall:
             # bottom right to lower right
             bottom_line = Line(Point(tl_x, br_y), Point(br_x, br_y))
-            self.win.draw_line(bottom_line, "blue")
+            self.win.draw_line(bottom_line, "purple")
+
+    def draw_move(self, to_cell, undo=False):
+        if undo:
+            color = "gray"
+        else:
+            color = "red"
+        start_center_x = self.x2 - (self.x2 - self.x1) / 2
+        start_center_y = self.y2 - (self.y2 - self.y1) / 2
+        end_center_x = to_cell.x2 - (to_cell.x2 - to_cell.x1) / 2
+        end_center_y = to_cell.y2 - (to_cell.y2 - to_cell.y1) / 2
+        line = Line(Point(start_center_x, start_center_y), Point(end_center_x, end_center_y))
+        self.win.draw_line(line, color)
+
