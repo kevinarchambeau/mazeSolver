@@ -44,18 +44,22 @@ class Point:
 
 
 class Cell:
-    def __init__(self, x1, y1, x2, y2, win, left_wall=True, right_wall=True, top_wall=True, bottom_wall=True):
+    def __init__(self, win):
+        self.x1 = None
+        self.y1 = None
+        self.x2 = None
+        self.y2 = None
+        self.win = win
+        self.left_wall = True
+        self.right_wall = True
+        self.top_wall = True
+        self.bottom_wall = True
+
+    def draw(self, x1, y1, x2, y2):
         self.x1 = x1
         self.y1 = y1
         self.x2 = x2
         self.y2 = y2
-        self.win = win
-        self.left_wall = left_wall
-        self.right_wall = right_wall
-        self.top_wall = top_wall
-        self.bottom_wall = bottom_wall
-
-    def draw(self):
         tl_x = self.x1
         tl_y = self.y1
         br_x = self.x2
