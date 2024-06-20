@@ -44,7 +44,7 @@ class Point:
 
 
 class Cell:
-    def __init__(self, win):
+    def __init__(self, win=None):
         self.x1 = None
         self.y1 = None
         self.x2 = None

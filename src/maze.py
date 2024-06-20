@@ -11,7 +11,7 @@ class Maze:
             num_cols,
             cell_size_x,
             cell_size_y,
-            win,
+            win=None,
     ):
         self.x1 = x1
         self.y1 = y1
