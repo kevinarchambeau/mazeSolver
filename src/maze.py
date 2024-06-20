@@ -38,6 +38,8 @@ class Maze:
         self._animate()
 
     def _create_cells(self):
+        if self.num_rows < 1 or self.num_cols < 1:
+            return None
         for i in range(self.num_cols):
             columns = []
             for j in range(self.num_rows):
