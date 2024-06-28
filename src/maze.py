@@ -25,7 +25,7 @@ class Maze:
 
     def _animate(self):
         self.win.redraw()
-        time.sleep(0.05)
+        time.sleep(0.01)
 
     def _draw_cell(self, i, j):
         if self.win is None:
@@ -45,9 +45,16 @@ class Maze:
             for j in range(self.num_rows):
                 columns.append(Cell(self.win))
             self._cells.append(columns)
+        # put this here for unit checks
+        self._break_entrance_and_exit()
 
         for i in range(self.num_cols):
             for j in range(self.num_rows):
                 self._draw_cell(i, j)
+
+    def _break_entrance_and_exit(self):
+        self._cells[0][0].top_wall = False
+        self._cells[self.num_cols - 1][self.num_rows - 1].bottom_wall = False
+
 
 

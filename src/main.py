@@ -1,4 +1,4 @@
-from draw import Window, Line, Point, Cell
+from draw import Window
 from maze import Maze
 
 num_rows = 12

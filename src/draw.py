@@ -64,22 +64,33 @@ class Cell:
         tl_y = self.y1
         br_x = self.x2
         br_y = self.y2
+
+        # from upper left to lower left
+        left_line = Line(Point(tl_x, tl_y), Point(tl_x, br_y))
+        # upper left to upper right
+        top_line = Line(Point(tl_x, tl_y), Point(br_x, tl_y))
+        # upper right to lower right
+        right_line = Line(Point(br_x, tl_y), Point(br_x, br_y))
+        # bottom right to lower right
+        bottom_line = Line(Point(tl_x, br_y), Point(br_x, br_y))
+
         if self.left_wall:
-            # from upper left to lower left
-            left_line = Line(Point(tl_x, tl_y), Point(tl_x, br_y))
             self.win.draw_line(left_line, "purple")
+        else:
+            self.win.draw_line(left_line, "white")
+
         if self.top_wall:
-            # upper left to upper right
-            top_line = Line(Point(tl_x, tl_y), Point(br_x, tl_y))
             self.win.draw_line(top_line, "purple")
+        else:
+            self.win.draw_line(top_line, "white")
         if self.right_wall:
-            # upper right to lower right
-            right_line = Line(Point(br_x, tl_y), Point(br_x, br_y))
             self.win.draw_line(right_line, "purple")
+        else:
+            self.win.draw_line(right_line, "white")
         if self.bottom_wall:
-            # bottom right to lower right
-            bottom_line = Line(Point(tl_x, br_y), Point(br_x, br_y))
             self.win.draw_line(bottom_line, "purple")
+        else:
+            self.win.draw_line(bottom_line, "white")
 
     def draw_move(self, to_cell, undo=False):
         if undo:
